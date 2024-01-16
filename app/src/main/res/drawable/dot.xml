@@ -1,8 +1,0 @@
-<!-- res/drawable/dot_indicator.xml -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
-    <size
-        android:width="8dp"
-        android:height="8dp" />
-    <solid android:color="#6750A4" />
-</shape>

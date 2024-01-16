@@ -42,8 +42,7 @@ class Splash : Fragment() {
             val ani = ObjectAnimator.ofFloat(view, "translationY", -100f)
             ani.duration = 1000
             ani.start()
-            Handler(Looper.getMainLooper()).postDelayed({ findNavController().navigate(R.id.action_splash_to_onboarding)
-            }, 2000)
+            Handler(Looper.getMainLooper()).postDelayed({ findNavController().navigate(R.id.action_splash_to_onboarding)           }, 2000)
 
 
         }
