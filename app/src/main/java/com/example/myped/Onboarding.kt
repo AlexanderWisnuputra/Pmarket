@@ -1,5 +1,7 @@
 package com.example.myped
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,17 +17,21 @@ import com.google.android.material.tabs.TabLayoutMediator
 class Onboarding : Fragment() {
     private lateinit var binding: FragmentOnboardingBinding
     private lateinit var viewPager: ViewPager2
+    private lateinit var sharedPref: Helper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentOnboardingBinding.inflate(inflater, container, false)
+        sharedPref = Helper(requireContext())
+        sharedPref.putObStatus("1", "skip")
+
         binding.next.setOnClickListener(View.OnClickListener { navigateToNextItem() })
         binding.skip.setOnClickListener(){
             findNavController().navigate(R.id.action_onboarding_to_login)
         }
-        binding.imageView2.setOnClickListener(){
+        binding.forward.setOnClickListener(){
             findNavController().navigate(R.id.action_onboarding_to_register)
         }
 

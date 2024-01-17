@@ -16,17 +16,21 @@ import com.example.myped.databinding.FragmentSplashBinding
 
 class Splash : Fragment() {
     private lateinit var binding: FragmentSplashBinding
+    private lateinit var sharedPref: Helper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPref = Helper(requireContext())
+        var skip = sharedPref.getObStatus("1")
         binding.run {
 
             animateView(splash, "FADE_ANIMATION", 0f, 1f, 800L)
@@ -42,8 +46,15 @@ class Splash : Fragment() {
             val ani = ObjectAnimator.ofFloat(view, "translationY", -100f)
             ani.duration = 1000
             ani.start()
-            Handler(Looper.getMainLooper()).postDelayed({ findNavController().navigate(R.id.action_splash_to_onboarding)           }, 2000)
-
+            if (skip =="skip") {
+                Handler(Looper.getMainLooper()).postDelayed(
+                    { findNavController().navigate(R.id.action_splash_to_login) },
+                    2000)
+            }else{
+                Handler(Looper.getMainLooper()).postDelayed(
+                    { findNavController().navigate(R.id.action_splash_to_onboarding) },
+                    2000)
+            }
 
         }
     }

@@ -1,7 +1,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Selected state -->
     <item android:state_selected="true">
-        <shape android:shape="oval"
+        <shape android:shape="ring"
+            android:useLevel="false"
             android:innerRadius="0dp"
             android:thickness="4dp" >
 
@@ -11,7 +12,8 @@
 
     <!-- Default state -->
     <item android:state_selected="false">
-        <shape android:shape="oval"
+        <shape android:shape="ring"
+            android:useLevel="false"
             android:innerRadius="0dp"
             android:thickness="4dp" >
             <solid android:color="#CAC4D0" />
